@@ -68,13 +68,15 @@
     async function sendMsg() {
       alert("Yoyo")
       if (liff.getContext().type != "none") {
-        await liff.liff.sendMessages([
+        await liff.sendMessages([
           {
             type: 'text',
             text: 'แบร่........',
           }
         ]);
         alert("Message sent")
+      } else {
+        alert("Context is none")
       }
     }
 
