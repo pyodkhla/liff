@@ -68,13 +68,12 @@
     async function sendMsg() {
       alert("Yoyo")
       if (liff.getContext().type != "none") {
-        await liff.sendMessages([
+        await liff.liff.sendMessages([
           {
-            type: "sticker",
-            stickerId: 1,
-            packageId: 1
+            type: 'text',
+            text: 'แบร่........',
           }
-        ])
+        ]);
         alert("Message sent")
       }
     }
