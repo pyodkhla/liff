@@ -72,11 +72,16 @@
     }
 
     async function getUserProfile() {
-      const profile = await liff.getProfile()
-      document.getElementById("pictureUrl").src = profile.pictureUrl
-      document.getElementById("userId").append(profile.userId)
-      document.getElementById("displayName").append(profile.displayName)
-      document.getElementById("statusMessage").append(profile.statusMessage)
+      try {
+        const profile = await liff.getProfile()
+        document.getElementById("pictureUrl").src = profile.pictureUrl
+        document.getElementById("userId").append(profile.userId)
+        document.getElementById("displayName").append(profile.displayName)
+        document.getElementById("statusMessage").append(profile.statusMessage)
+      } catch (error) {
+        console.error(error)
+      }
+      
     }
 
     function getEnvironment() {
@@ -84,6 +89,7 @@
       document.getElementById("language").append(liff.getLanguage())
       document.getElementById("version").append(liff.getVersion())
       document.getElementById("accessToken").append(liff.getAccessToken())
+      alert(liff.getIsInClient())
       document.getElementById("isInClient").append(liff.getIsInClient())
       if (liff.getIsInClient()) {
         document.getElementById("btnLogOut").style.display = "none"
