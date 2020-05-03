@@ -73,16 +73,11 @@
     }
 
     async function getUserProfile() {
-      try {
-        const profile = await liff.getProfile()
-        document.getElementById("pictureUrl").src = profile.pictureUrl
-        document.getElementById("userId").append(profile.userId)
-        document.getElementById("displayName").append(profile.displayName)
-        document.getElementById("statusMessage").append(profile.statusMessage)
-      } catch (error) {
-        document.getElementById("error").append(error)
-      }
-      
+      const profile = await liff.getProfile()
+      document.getElementById("pictureUrl").src = profile.pictureUrl
+      document.getElementById("userId").append(profile.userId)
+      document.getElementById("displayName").append(profile.displayName)
+      document.getElementById("statusMessage").append(profile.statusMessage)
     }
 
     function getEnvironment() {
@@ -91,6 +86,7 @@
       document.getElementById("version").append(liff.getVersion())
       document.getElementById("accessToken").append(liff.getAccessToken())
       document.getElementById("isInClient").append(liff.getIsInClient())
+      alert("IsInClient:" + liff.getIsInClient())
       if (liff.getIsInClient()) {
         document.getElementById("btnLogOut").style.display = "none"
       } else {
@@ -101,7 +97,7 @@
     }
 
     async function main() {
-      // alert("LINE Developers x Skooldio")
+      alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1654167431-ApqlKYKE" })
       getEnvironment()
       getUserProfile()
