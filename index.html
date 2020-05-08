@@ -57,12 +57,14 @@
       liff.closeWindow()
     }
 
+    /*
+    * ประกาศ: เนื่องจากปัญหาทางเทคนิค LINE บน iOS ตั้งแต่ version 9.19.0 เป็นต้นไป
+    * จะไม่สามารถเรียกใช้ฟังก์ชั่นได้ ถ้ามีการเปลี่ยนแปลงผมจะรีบมาแจ้งให้ทราบทันทีครับ 
+    * (สำหรับ Android ยังใช้ได้อยู่เหมือนเดิมครับ)
+    */
     async function scanCode() {
-      alert("scanCode1!!!")
       const result = await liff.scanCode()
-      alert("scanCode2!!!")
       document.getElementById("scanCode").append(result.value)
-      alert("scanCode3!!!")
     }
 
     function openWindow() {
@@ -132,10 +134,13 @@
     async function main() {
       //alert("LINE Developers x Skooldio")
       await liff.init({ liffId: "1654167431-ApqlKYKE" })
-      getEnvironment()
-      getUserProfile()
-      getContext()
-      getFriendship()
+      document.getElementById("isLoggedIn").append(liff.isLoggedIn())
+      if (liff.isLoggedIn()) {
+        getEnvironment()
+        getUserProfile()
+        getContext()
+        getFriendship()
+      }
       // createUniversalLink()
     }
     main()
