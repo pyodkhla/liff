@@ -60,6 +60,11 @@
     }
 
     function openWindow() {
+      // you can open two types that are internal line app and outside external.
+      liff.openWindow({
+        url: "https://line.me",
+        external: true
+      })
     }
 
     async function getFriendship() {
